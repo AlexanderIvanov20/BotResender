@@ -28,9 +28,12 @@ def get_message_with_photo(message: types.Message):
     downloaded_file = bot.download_file(file.file_path)
 
     user_id, name, username, date_message = get_creds(message)
-    current_message = Message.objects.create(user_id=user_id, name=name,
-                                             username=username,
-                                             date=date_message)
+    current_message = Message.objects.create(
+        user_id=user_id,
+        name=name,
+        username=username,
+        date=date_message
+    )
     with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
                            'photos', f'{file_id}.png'), 'wb') as new_file:
         new_file.write(downloaded_file)
@@ -47,11 +50,13 @@ def get_mesage(message: types.Message):
     text = message.text
 
     user_id, name, username, date_message = get_creds(message)
-    current_message = Message.objects.create(user_id=int(user_id), name=name,
-                                             username=username,
-                                             date=datetime.fromtimestamp(
-                                                 date_message),
-                                             text=text)
+    current_message = Message.objects.create(
+        user_id=int(user_id),
+        name=name,
+        username=username,
+        date=datetime.fromtimestamp(date_message),
+        text=text
+    )
     print(text)
 
 
