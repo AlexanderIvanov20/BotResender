@@ -1,38 +1,57 @@
 import telebot
-from telebot.types import *
+from telebot import types
+import os
+import django
+from datetime import datetime
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BotSender.settings')
+django.setup()
+from Resender.models import Message
 
 
 bot = telebot.TeleBot(token='1077949754:AAGTCrVh6NpXWIM-R7Rez4SHcCx5mM6aXck')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def get_creds(message: Message):
-    user_id = message.chat.id
-    name = f'{message.chat.first_name} {message.chat.last_name}'
-    username = message.chat.username
-    return user_id, name, username
+def get_creds(message: types.Message):
+    user_id = message.from_user.id
+    name = f'{message.from_user.first_name} {message.from_user.last_name}'
+    username = message.from_user.username
+    date_message = message.date
+    return user_id, name, username, date_message
 
 
 @bot.message_handler(content_types=['photo', 'document'])
-def get_message_with_photo(message: Message):
+def get_message_with_photo(message: types.Message):
     file_id = message.photo[1].file_id
     file = bot.get_file(file_id)
     downloaded_file = bot.download_file(file.file_path)
 
-    user_id, name, username = get_creds(message)
-
-    with open(f'{file_id}.png', 'wb') as new_file:
+    user_id, name, username, date_message = get_creds(message)
+    current_message = Message.objects.create(user_id=user_id, name=name,
+                                             username=username,
+                                             date=date_message)
+    with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
+                           'photos', f'{file_id}.png'), 'wb') as new_file:
         new_file.write(downloaded_file)
 
     if message.caption is not None:
         caption = message.caption
+        current_message.text = caption
         print(caption)
+    current_message.save()
 
 
 @bot.message_handler(content_types=['text'])
-def get_mesage(message: Message):
+def get_mesage(message: types.Message):
     text = message.text
 
-    user_id, name, username = get_creds(message)
+    user_id, name, username, date_message = get_creds(message)
+    current_message = Message.objects.create(user_id=int(user_id), name=name,
+                                             username=username,
+                                             date=datetime.fromtimestamp(
+                                                 date_message),
+                                             text=text)
     print(text)
 
 
