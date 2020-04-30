@@ -32,11 +32,14 @@ def get_message_with_photo(message: types.Message):
         username=username,
         date=date_message
     )
-    with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
-                           'photos', f'{file_id}.png'), 'wb') as new_file:
+    savepath = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
+                            'photos', f'{file_id}.png')
+
+    with open(savepath, 'wb') as new_file:
         new_file.write(downloaded_file)
-    
-    Message.objects.get()
+
+    message_object = MessageGroup.objects.get(message_id=message.message_id)
+    message_object.image = savepath
 
 
     if message.caption is not None:
@@ -62,7 +65,7 @@ def get_mesage(message: types.Message):
 
 
 @bot.channel_post_handler(content_types=['photo', 'document'])
-def get_message_with_photo(message: types.Message):
+def get_message_with_photo_channel(message: types.Message):
     file_id = message.photo[1].file_id
     file = bot.get_file(file_id)
     downloaded_file = bot.download_file(file.file_path)
@@ -71,9 +74,14 @@ def get_message_with_photo(message: types.Message):
         date=message.date,
         message_id=message.message_id
     )
-    with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
-                           'photos', f'{file_id}.png'), 'wb') as new_file:
+    savepath = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
+                            'photos', f'{file_id}.png')
+
+    with open(savepath, 'wb') as new_file:
         new_file.write(downloaded_file)
+
+    message_object = MessageGroup.objects.get(message_id=message.message_id)
+    message_object.image = savepath
 
     if message.caption is not None:
         caption = message.html_caption
@@ -84,7 +92,7 @@ def get_message_with_photo(message: types.Message):
 
 @bot.channel_post_handler(content_types=['text'],
                           func=lambda message: message.text != 'send')
-def get_mesage(message: types.Message):
+def get_mesage_channel(message: types.Message):
     text = message.html_text
     date = message.date
     message_id = message.message_id
