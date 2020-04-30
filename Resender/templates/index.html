@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -27,17 +28,21 @@
 
 	<!--Fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900" rel="stylesheet">
-	<link rel="stylesheet" href="assets/fonts/font-awesome.css">
+	<!-- <link rel="stylesheet" href="assets/fonts/font-awesome.css"> -->
+	<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.css' %}">
 
 	<!--General Style-->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+	<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/mailform.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/mailform.css" type="text/css"> -->
+	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/mailform.css' %}">
 
 	<!--Color Style-->
 	<!-- <link rel="stylesheet" href="assets/css/colors/green.css" type="text/css"> -->
-
 </head>
 
 <body>
@@ -64,7 +69,7 @@
 
 								<!-- Logo -->
 								<a href="#" id="brand" class="animate fade-in animation-time-3s"><img
-										src="assets/img/logo.png" alt=""></a>
+										src="{% static 'assets/img/logo.png' %}" alt=""></a>
 							</div>
 							<div class="col-md-12 vertical-aligned-wrapper">
 
@@ -108,7 +113,7 @@
 
 			<!-- Background -->
 			<div class="background-wrapper has-map">
-				<div class="bg-transfer opacity-50"><img src="assets/img/bg1.jpg" alt=""></div>
+				<div class="bg-transfer opacity-50"><img src="{% static 'assets/img/bg1.jpg' %}" alt=""></div>
 			</div>
 		</div>
 	</div>
@@ -118,10 +123,14 @@
 	<div class="backdrop"></div>
 
 	<!--Java Scripts-->
-	<script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.plugin.min.js"></script>
-	<script type="text/javascript" src="assets/js/custom.js"></script>
+	<script type="text/javascript" src="assets/js/custom.js"></script> -->
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.2.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
 
 	<!-- Google reCaptcha required javascript file -->
 	<script src='https://www.google.com/recaptcha/api.js'></script>
