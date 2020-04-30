@@ -86,8 +86,12 @@
 
 									{% for message in messages %}
 									<a href="https://t.me/doloteam">Буровой инструмент и оборудование</a><br>
+
+									{% if message.text != '' %}
 									{{ message.text|linebreaks }}<br>
-									<img src="/media/{{ message.image }}" alt="">
+									{% endif %}
+
+									<img src="/media/{{ message.image }}" alt=""><br>
 									{{ message.date|transform_date }}<br>
 
 									{% if message.url is not None and message.url != '' %}

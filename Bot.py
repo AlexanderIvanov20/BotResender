@@ -61,13 +61,11 @@ def get_creds(message: types.Message):
 
 @bot.channel_post_handler(content_types=['photo', 'document'])
 def get_message_with_photo_channel(message: types.Message):
-    file_id = message.photo[1].file_id
+    file_id = message.photo[0].file_id
     file = bot.get_file(file_id)
     downloaded_file = bot.download_file(file.file_path)
     save_path = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
                              'photos', f'{file_id}.png')
-    # saved_path = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
-    #                           'saved_images', f'{file_id}.png')
 
     current_message = MessageChannel.objects.create(
         date=message.date,
