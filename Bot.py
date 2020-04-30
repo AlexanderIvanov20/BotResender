@@ -37,6 +37,9 @@ def get_message_with_photo(message: types.Message):
     with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
                            'photos', f'{file_id}.png'), 'wb') as new_file:
         new_file.write(downloaded_file)
+    
+    Message.objects.get()
+
 
     if message.caption is not None:
         caption = message.caption
