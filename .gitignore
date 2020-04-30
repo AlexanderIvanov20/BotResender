@@ -1,3 +1,31 @@
-.vscode/
-migrations/
+# Cache
 __pycache__/
+.sass-cache/
+.DS_Store
+
+
+# Migrations (excluding all, but __init__.py package marker)
+*/migrations/*
+!*/migrations/__init__.py
+
+# Aliasing
+/static/
+/media/
+
+# Debug DB
+*.db
+*.sql
+*.pgsql
+*.mysql
+*.sqlite3
+
+# Settings & configs & scripts
+local_settings.py
+local_manage.py
+
+# Modules
+/venv/
+node_modules
+
+# IDE
+.vscode
