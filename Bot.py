@@ -1,3 +1,4 @@
+from django.core.files import File
 import telebot
 from telebot import types
 import os
@@ -60,7 +61,7 @@ def get_creds(message: types.Message):
 
 @bot.channel_post_handler(content_types=['photo', 'document'])
 def get_message_with_photo_channel(message: types.Message):
-    file_id = message.photo[1].file_id
+    file_id = message.photo[0].file_id
     file = bot.get_file(file_id)
     downloaded_file = bot.download_file(file.file_path)
     save_path = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
@@ -70,10 +71,12 @@ def get_message_with_photo_channel(message: types.Message):
         date=message.date,
         message_id=message.message_id
     )
-    current_message.image = save_path
 
     with open(save_path, 'wb') as new_file:
         new_file.write(downloaded_file)
+
+    current_message.image.save(f'{file_id}.png', File(
+        open(save_path, 'rb')))
 
     if message.caption is not None:
         caption = message.html_caption

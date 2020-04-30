@@ -4,5 +4,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('', Base.as_view(), name='base')
+    path('set-count/', Base.as_view(), name='base'),
+    path('', OutputMessagesBase.as_view(),
+         name='default_count_messages'),
 ]
