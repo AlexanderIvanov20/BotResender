@@ -1,0 +1,154 @@
+{% load static %}
+{% load date %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zxx">
+<!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Art Sound Group">
+
+	<!--Title-->
+	<title>Doloteam &mdash; Продажа/покупка бурового инструмента и оборудования!</title>
+
+	<!--Seo Tags-->
+	<meta name="description" content="DoloTEAM - Телеграмм группа, торговая площадка" />
+	<meta name="keywords" content="Буровой инструмент, шарошечные долота, буровое оборудование." />
+	<meta name="robots" content="index, follow">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
+
+	<!-- Apple Icon -->
+	<link rel="apple-touch-icon" href="{% static 'assets/favicon.ico' %}">
+
+	<!--Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="assets/fonts/font-awesome.css"> -->
+	<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.css' %}">
+
+	<!--General Style-->
+	<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/mailform.css" type="text/css"> -->
+	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/mailform.css' %}">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+	<!--Color Style-->
+	<!-- <link rel="stylesheet" href="assets/css/colors/green.css" type="text/css"> -->
+</head>
+
+<body>
+
+	<!-- Loading -->
+	<div id="preload">
+		<div id="preload-content">
+			<div class="cssload-loader">
+				<div class="cssload-inner cssload-one"></div>
+				<div class="cssload-inner cssload-two"></div>
+				<div class="cssload-inner cssload-three"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Content -->
+	<div id="outer-wrapper">
+		<div id="inner-wrapper">
+			<div id="table-wrapper">
+				<div class="container">
+					<div id="row-content">
+						<div id="content-wrapper">
+							<div id="row-header" class="col-md-12 col-sm-12 text-left">
+								<!-- Logo -->
+								<a href="#" id="brand" class="animate fade-in animation-time-3s"><img
+										src="{% static 'assets/img/logo.png' %}" alt=""></a>
+							</div>
+							<div class="col-md-12 vertical-aligned-wrapper">
+								
+								<div class="col-md-12 vertical-aligned-element">
+
+									<form action="" method="POST">
+										{% csrf_token %}
+										{{ form.count.label }}<br>
+										{{ form.count }}<br>
+										<button type="submit" style="margin-top: 7px;">Подтвердить</button>
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div id="row-footer">
+						<footer>
+							<div class="col-md-6 col-sm-6 col-xs-6 vertical-aligned-element text-left">
+								<p class="animate fade-in animation-time-2s delay-1-5s">
+									© DoloTEAM<br>
+									Покупка/продажа бурового инструмента и оборудования!
+								</p>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6 vertical-aligned-element text-right">
+								<p class="animate fade-in animation-time-2s delay-1-5s">
+									<i class="fa fa-phone"></i> <a href="tel:+375296321916">+375 29 632 19 16</a><br>
+									<i class="fa fa-whatsapp"></i> <a href="https://wa.me/375296321916">+375 29 632 19
+										16</a><br>
+									<i class="fa fa-envelope-o"></i> <a href="mailto:6321916@gmail.com">
+										6321916@gmail.com</a>
+								</p>
+							</div>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+			<!-- Background -->
+			<div class="background-wrapper has-map">
+				<div class="bg-transfer opacity-50"><img src="{% static 'assets/img/bg1.jpg' %}" alt=""></div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="backdrop"></div>
+
+	<!--Java Scripts-->
+	<!-- <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.plugin.min.js"></script>
+	<script type="text/javascript" src="assets/js/custom.js"></script> -->
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.2.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+
+	<!-- Google reCaptcha required javascript file -->
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (m, e, t, r, i, k, a) {
+			m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+			m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+		})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(62381665, "init", {
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true
+		});
+	</script>
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/62381665" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
+	<!-- /Yandex.Metrika counter -->
+</body>
