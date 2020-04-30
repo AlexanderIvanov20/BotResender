@@ -74,17 +74,17 @@
 										src="{% static 'assets/img/logo.png' %}" alt=""></a>
 							</div>
 							<div class="col-md-12 vertical-aligned-wrapper">
-								
 								<div class="col-md-12 vertical-aligned-element">
-
-									<form action="" method="POST">
-										{% csrf_token %}
-										{{ form.count.label }}<br>
-										{{ form.count }}<br>
-										<button type="submit" style="margin-top: 7px;">Подтвердить</button>
-									</form>
+									<div class="col-md-5 col-sm-5 col-xs-12 vertical-aligned-element animate fade-in animation-time-1s delay-1s in"
+										style="position: relative; opacity: 0; top: -14px;">
+										<form action="" method="POST">
+											{% csrf_token %}
+											{{ form.count.label }}<br>
+											{{ form.count }}<br>
+											<button type="submit" style="margin-top: 7px;">Подтвердить</button>
+										</form>
+									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>

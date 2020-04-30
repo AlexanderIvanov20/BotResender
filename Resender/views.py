@@ -4,10 +4,15 @@ from django.views import View
 from .models import MessageChannel
 from .forms import CountMessagesForm
 
+import json
+
 
 class Base(View):
     def get(self, request):
-        form = CountMessagesForm()
+        with open('config.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        form = CountMessagesForm(initial={'count': data['count_messages']})
 
         context = {
             'form': form
@@ -18,9 +23,13 @@ class Base(View):
         form = CountMessagesForm(request.POST)
 
         if form.is_valid():
-            print(form.cleaned_data)
             count = form.cleaned_data['count']
-            return redirect('count_messages', count=count)
+
+            with open('config.json', 'w', encoding='utf-8') as file:
+                json.dump({'count_messages': count}, file,
+                          indent=4, ensure_ascii=True)
+
+            return redirect('default_count_messages')
 
         context = {
             'form': form
@@ -30,16 +39,11 @@ class Base(View):
 
 class OutputMessagesBase(View):
     def get(self, request):
-        all_messages = MessageChannel.objects.all()[:20]
-        context = {
-            'messages': all_messages
-        }
-        return render(request, 'index.html', context)
+        with open('config.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
 
-
-class OutputMessages(View):
-    def get(self, request, count):
-        all_messages = MessageChannel.objects.all()[:count]
+        count = data['count_messages']
+        all_messages = MessageChannel.objects.all()[:20][::-1]
         context = {
             'messages': all_messages
         }
