@@ -63,19 +63,21 @@ def get_message_with_photo_channel(message: types.Message):
     file_id = message.photo[1].file_id
     file = bot.get_file(file_id)
     downloaded_file = bot.download_file(file.file_path)
+    save_path = os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
+                             'photos', f'{file_id}.png')
 
     current_message = MessageChannel.objects.create(
         date=message.date,
         message_id=message.message_id
     )
-    with open(os.path.join(BASE_DIR, 'BotResender', 'BotSender', 'media',
-                           'photos', f'{file_id}.png'), 'wb') as new_file:
+    current_message.image = save_path
+
+    with open(save_path, 'wb') as new_file:
         new_file.write(downloaded_file)
 
     if message.caption is not None:
         caption = message.html_caption
         current_message.text = caption
-        print(caption)
     current_message.save()
 
 
