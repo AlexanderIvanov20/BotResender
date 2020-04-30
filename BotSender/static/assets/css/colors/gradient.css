@@ -1,0 +1,37 @@
+
+.button{
+	border: 2px solid #fff;
+	background: -webkit-gradient(linear, left top, right top, from(#3e2bce), color-stop(100%, #2dd3aa), color-stop(100%, #2dd3aa), to(#2dd3aa));
+    background: -o-linear-gradient(left, #3e2bce 0%, #2dd3aa 100%, #2dd3aa 100%, #2dd3aa 100%);
+    background: linear-gradient(to right, #3e2bce 0%, #2dd3aa 100%, #2dd3aa 100%, #2dd3aa 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e2bce', endColorstr='#2dd3aa', GradientType=1);;
+	color: #fff;	
+}
+.button:before{
+	background-color: #fff;
+   border: 2px solid #fff;
+}
+.button:hover, .button:active {
+   color: #000;
+   border: 2px solid #fff;
+   background-color: #fff;
+}
+.button.bordered:hover, .button.bordered:active, .button.bordered:focus  {
+   color: #000;
+   border: 2px solid #e8c537;
+   background-color: #fff;
+}
+
+.skill .bar .bar-active, .skill .bar .bar-background, .tse-scrollbar .drag-handle {
+  background-color: #e8c537;
+}
+.side-panel .social .fa a, .side-panel .description i{
+	color: #fff;
+}
+.side-panel i, .social a:hover, .mfValidation, .countdown-period {
+	color: #16d0c5;
+}
+
+.side-panel .gallery .gallery-item .description {
+  background-color: rgba(232, 197, 55, 0.5);
+}
