@@ -9,9 +9,8 @@ __pycache__/
 !*/migrations/__init__.py
 
 # Aliasing
-/static/
-# /media/
-media/
+*/static/
+*/media/
 
 # Debug DB
 *.db
