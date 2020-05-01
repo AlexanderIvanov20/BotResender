@@ -48,3 +48,7 @@ class OutputMessagesBase(View):
             'messages': all_messages
         }
         return render(request, 'index.html', context)
+
+class New(View):
+    def get(self, request):
+        return render(request, 'group.html')
