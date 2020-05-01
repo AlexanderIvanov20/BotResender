@@ -47,8 +47,5 @@ class OutputMessagesBase(View):
         context = {
             'messages': all_messages
         }
-        return render(request, 'index.html', context)
+        return render(request, 'new_index.html', context)
 
-class New(View):
-    def get(self, request):
-        return render(request, 'new_index.html')
