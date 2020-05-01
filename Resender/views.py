@@ -51,4 +51,4 @@ class OutputMessagesBase(View):
 
 class New(View):
     def get(self, request):
-        return render(request, 'group.html')
+        return render(request, 'new_index.html')
