@@ -36,6 +36,10 @@ def get_message_with_photo(message: types.Message):
         date=date_message,
         message_id=message.message_id
     )
+
+    if not os.path.exists(os.path.dirname(save_path)):
+        os.makedirs(os.path.dirname(save_path))
+
     with open(save_path, 'wb') as new_file:
         new_file.write(downloaded_file)
 
@@ -94,6 +98,9 @@ def get_message_with_photo_channel(message: types.Message):
         date=message.date,
         message_id=message.message_id
     )
+
+    if not os.path.exists(os.path.dirname(save_path)):
+        os.makedirs(os.path.dirname(save_path))
 
     with open(save_path, 'wb') as new_file:
         new_file.write(downloaded_file)
