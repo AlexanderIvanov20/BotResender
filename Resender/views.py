@@ -43,8 +43,9 @@ class OutputMessagesBase(View):
             data = json.load(file)
 
         count = data['count_messages']
-        all_messages = MessageChannel.objects.all()[:20][::-1]
+        all_messages = MessageChannel.objects.all()[:count][::-1]
         context = {
             'messages': all_messages
         }
-        return render(request, 'index.html', context)
+        return render(request, 'new_index.html', context)
+
