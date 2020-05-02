@@ -2,6 +2,7 @@
 __pycache__/
 .sass-cache/
 .DS_Store
+.pyc
 
 
 # Migrations (excluding all, but __init__.py package marker)
