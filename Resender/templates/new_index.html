@@ -12,7 +12,7 @@
     }
     .outer-background{
         background-image: url("{% static 'assets/img/full_background3.jpg' %}");
-        background-repeat: no-repeat;
+        background-position: center;
         background-attachment: fixed;
     }
     .content-container{
@@ -58,13 +58,19 @@
                     <div class="message-container mt-3">
                         <div class="content-container rounded p-3 mb-2">
                             <a href="https://t.me/doloteam">Буровой инструмент и оборудование</a><br>
-            
+                            <br>
                             {% if message.text != '' %}
-                            {{ message.text|linebreaks }}<br>
                             {% endif %}
-            
-                            <img src="/media/{{ message.image }}" alt=""><br>
-                            {{ message.date|transform_date }}<br>
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <img src="/media/{{ message.image }}" alt="" class="rounded"><br>
+                                </div>
+                            </div>
+                            <br>
+                            {{ message.text|linebreaks }}<br>
+                            <p class="text-right mb-0">
+                                {{ message.date|transform_date }}<br>
+                            </p>
             
                             {% if message.url is not None and message.url != '' %}
                             <!-- <a href="{{ message.url }}">Подробнее</a><br> -->
