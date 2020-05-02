@@ -7,34 +7,39 @@
 <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 
 <style>
-    *{
-        color: white !important; 
+    * {
+        color: white !important;
     }
-    .outer-background{
+
+    .outer-background {
         background-image: url("{% static 'assets/img/full_background3.jpg' %}");
         background-repeat: no-repeat;
         background-attachment: fixed;
+        background-size: 100% 100%;
     }
-    .content-container{
+
+    .content-container {
         background-color: rgb(59, 59, 59);
     }
-    .message-button{
+
+    .message-button {
         display: block;
         opacity: 75%;
         background-color: rgb(59, 59, 59);
         width: 100%;
         color: white !important;
     }
+
     /* .button-container{
     } */
 </style>
 
 <!--Fonts-->
-<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="assets/fonts/font-awesome.css"> -->
 <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.css' %}">
 {% endblock head %}
-    
+
 {% block body %}
 <main>
     <div class="container py-5">
@@ -43,57 +48,89 @@
                 <img src="{% static 'assets/img/logo.png' %}" alt=""><br>
             </div>
             <div class="col-auto">
-                Какие-то сообщения, хрен знает зачем
+                <!-- class="animate fade-in animation-time-2s" -->
+                <a class="btn btn-dark shadow float-right" href="https://t.me/doloteams"><img src="/media/logo.png"
+                        alt="" style="width: 25px; height: 25px;"> Присоединиться к группе</a><br>
+                <a class="btn btn-dark shadow mt-2 float-right" href="{% url 'base' %}">Изменить количество
+                    сообщений</a>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-5">
+            <div class="col-6">
                 <!--Content-->
                 <h3>Наша ГРУППА в Telegram</h3>
-    
+
                 <!--Mail Form-->
                 <p>Вы можете связаться с нами чтобы вступить в нашу группу!</p>
-    
+
                 {% for message in messages %}
-                    <div class="message-container mt-3">
-                        <div class="content-container rounded p-3 mb-2">
-                            <a href="https://t.me/doloteam">Буровой инструмент и оборудование</a><br>
-            
-                            {% if message.text != '' %}
-                            {{ message.text|linebreaks }}<br>
-                            {% endif %}
-            
-                            <img src="/media/{{ message.image }}" alt=""><br>
-                            {{ message.date|transform_date }}<br>
-            
-                            {% if message.url is not None and message.url != '' %}
-                            <!-- <a href="{{ message.url }}">Подробнее</a><br> -->
-                            {% endif %}
-                            <br>
-                        </div>
-                        <!-- <div class="button-container rounded center-block"> -->
-                            <a href="{{ message.url }}" class="message-button rounded text-center py-1">Подробнее</a><br>
-                        <!-- </div> -->
+                <div class="row">
+                    <div class="col-1">
+                        <img src="https://cdn4.telesco.pe/file/PfsD1gh5cZdLstuoGSjniu1FqUgW8nHgrUT_gC5I5kc09RwYzCyOYnDYk7D7A9MtqunVjCP--9NOQiCYBZBMsBdDWaXiJ1-8P0rbcxTILLH9ulABjsFMtiaLYCGuAvDP2yOwLb8mRVOxp0skimB8T_f5nPZlElrtksJrZOlnuoBpGV8mrph--65Aovyj6NzHOvKWutTW660bhdgHKpJy80rE7-O1GIZARc3uQoOhwrnjXjw8DlLHzYvpMlRv-jNZHJcEdaQ6PWfdnuCuOUUasIY6MNQBnwKpeJ86w0fpzz-Spm_BJQzgn_NnBM-x4ER6dQWQhsBhabIFuFl3vf2eOw.jpg"
+                            alt="" style="width: 35px; height: 35px; margin-top: 25px; margin-right: 10px;"
+                            class="rounded-circle">
                     </div>
+                    <div class="col-11">
+                        <div class="message-container mt-4">
+                            <div class="content-container rounded mb-1 shadow">
+                                <div class="mt-2 ml-2">
+                                    <a href="https://t.me/doloteam" style="margin-top: 20px;" class="text-info">Буровой инструмент и оборудование</a>
+                                </div>
+
+                                {% if message.forward is not None %}
+                                <div class="ml-2">
+                                    Из чата с 
+                                    <a href="https://t.me/{{ message.forward.username }}" class="text-info">{{ message.forward.name }}</a>
+                                </div>
+                                {% endif %}                                    
+
+                                {% if message.image %}
+                                <div class="mt-1">
+                                    <img src="/media/{{ message.image }}" style="width: 100%;" alt="">
+                                </div>
+                                {% endif %}
+
+                                <div class="p-0">
+                                    {% if message.text != '' %}
+                                    <div class="ml-3 mt-2">
+                                        {{ message.text|linebreaks }}
+                                    </div>
+                                    {% endif %}
+
+                                    <div class="text-right font-italic mr-2 p-1">
+                                        <p class="mb-1">{{ message.date|transform_date }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- <a href="{{ message.url }}">Подробнее</a><br> -->
+                            </div>
+                            <!-- <div class="button-container rounded center-block"> -->
+                            {% if message.url is not None and message.url != '' %}
+                            <a href="{{ message.url }}" class="message-button rounded text-center py-2">Подробнее</a>
+                            {% endif %}
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
-    
+
             </div>
         </div>
-        <footer>
-            <div class="row justify-content-between">
+        <footer class="mt-5">
+            <div class="row">
                 <!-- <div class="col-md-6 col-sm-6 col-xs-6"> -->
-                <div class="col-6">
+                <div class="col-md-6">
                     <p class="animate fade-in animation-time-2s delay-1-5s">
                         © DoloTEAM<br>
                         Покупка/продажа бурового инструмента и оборудования!
                     </p>
                 </div>
                 <!-- <div class="col-md-6 col-sm-6 col-xs-6"> -->
-                <div class="col-6 text-right">
+                <div class="col-md-6 text-right">
                     <p class="animate fade-in animation-time-2s delay-1-5s">
-                    <i class="fa fa-phone"></i> <a href="tel:+375296321916">+375 29 632 19 16</a><br>
-                    <i class="fa fa-whatsapp"></i> <a href="https://wa.me/375296321916">+375 29 632 1916</a><br>
-                    <i class="fa fa-envelope-o"></i> <a href="mailto:6321916@gmail.com">6321916@gmail.com</a></p>
+                        <i class="fa fa-phone"></i> <a href="tel:+375296321916">+375 29 632 19 16</a><br>
+                        <i class="fa fa-whatsapp"></i> <a href="https://wa.me/375296321916">+375 29 632 1916</a><br>
+                        <i class="fa fa-envelope-o"></i> <a href="mailto:6321916@gmail.com">6321916@gmail.com</a></p>
                 </div>
             </div>
         </footer>
