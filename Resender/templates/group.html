@@ -1,0 +1,48 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        background-color: rgb(210, 230, 240);
+    }
+    .heading{
+        background-color: #497799;
+        position: fixed;
+        width: 100%;
+        /* height: 60px; */
+    }
+    .header-image{
+        height: 50px;
+    }
+    .message{
+        background-color: white;;
+    }
+</style>
+{% endblock head %}
+    
+{% block body %}
+<header>
+    <div class="container-fluid heading">
+        <div class="container">
+            <div class="row justify-content-center my-2">
+                <div class="col-1">
+                    <img src="{% static 'hotpng.com.png' %}" class="header-image img-fluid" alt="">
+                </div>
+                <div class="col-auto py-2">
+                    <div class="py-auto">
+                        <h4>Doloteam</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    .
+</main>
+{% endblock body %}
