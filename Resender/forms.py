@@ -6,7 +6,9 @@ class CountMessagesForm(forms.Form):
         min_value=5,
         widget=forms.NumberInput(
             attrs={
-                'placeholder': 'Введите количество сообщений...'
+                'placeholder': 'Введите количество сообщений...',
+                'style': 'width: 500px',
+                'class': 'form-control text-dark shadow'
             }
         ),
         label='Количество сообщений'

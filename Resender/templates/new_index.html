@@ -42,17 +42,18 @@
 
 {% block body %}
 <main>
-    <div class="container py-5">
+    <div class="container mt-5">
         <div class="row justify-content-between pb-3">
             <div class="col-auto">
                 <img src="{% static 'assets/img/logo.png' %}" alt=""><br>
             </div>
-            <div class="col-auto">
+            <div class="col-auto mt-4">
                 <!-- class="animate fade-in animation-time-2s" -->
+                {% if is_button %}
                 <a class="btn btn-dark shadow float-right" href="https://t.me/doloteams"><img src="/media/logo.png"
                         alt="" style="width: 25px; height: 25px;"> Присоединиться к группе</a><br>
-                <a class="btn btn-dark shadow mt-2 float-right" href="{% url 'base' %}">Изменить количество
-                    сообщений</a>
+                {% endif %}
+                <a class="btn btn-dark shadow mt-2 float-right" href="{% url 'base' %}">Настройки</a>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -74,15 +75,17 @@
                         <div class="message-container mt-4">
                             <div class="content-container rounded mb-1 shadow">
                                 <div class="mt-2 ml-2">
-                                    <a href="https://t.me/doloteam" style="margin-top: 20px;" class="text-info">Буровой инструмент и оборудование</a>
+                                    <a href="https://t.me/doloteam" class="text-info">Буровой
+                                        инструмент и оборудование</a>
                                 </div>
 
                                 {% if message.forward is not None %}
                                 <div class="ml-2">
-                                    Из чата с 
-                                    <a href="https://t.me/{{ message.forward.username }}" class="text-info">{{ message.forward.name }}</a>
+                                    Из чата с
+                                    <a href="https://t.me/{{ message.forward.username }}"
+                                        class="text-info">{{ message.forward.name }}</a>
                                 </div>
-                                {% endif %}                                    
+                                {% endif %}
 
                                 {% if message.image %}
                                 <div class="mt-1">
@@ -92,7 +95,7 @@
 
                                 <div class="p-0">
                                     {% if message.text != '' %}
-                                    <div class="ml-3 mt-2">
+                                    <div class="ml-3 mt-2 mr-3">
                                         {{ message.text|linebreaks }}
                                     </div>
                                     {% endif %}
@@ -101,26 +104,21 @@
                                         <p class="mb-1">{{ message.date|transform_date }}</p>
                                     </div>
                                 </div>
-
-                                <!-- <a href="{{ message.url }}">Подробнее</a><br> -->
                             </div>
-                            <!-- <div class="button-container rounded center-block"> -->
                             {% if message.url is not None and message.url != '' %}
                             <a href="{{ message.url }}" class="message-button rounded text-center py-2">Подробнее</a>
                             {% endif %}
-                            <!-- </div> -->
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-
             </div>
         </div>
         <footer class="mt-5">
             <div class="row">
                 <!-- <div class="col-md-6 col-sm-6 col-xs-6"> -->
                 <div class="col-md-6">
-                    <p class="animate fade-in animation-time-2s delay-1-5s">
+                    <p class="animate fade-in animation-time-2s delay-1-5s mt-4">
                         © DoloTEAM<br>
                         Покупка/продажа бурового инструмента и оборудования!
                     </p>

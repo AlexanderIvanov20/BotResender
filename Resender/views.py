@@ -15,9 +15,10 @@ class Base(View):
         form = CountMessagesForm(initial={'count': data['count_messages']})
 
         context = {
-            'form': form
+            'form': form,
+            'is_button': data['button']
         }
-        return render(request, 'index1.html', context)
+        return render(request, 'new_index1.html', context)
 
     def post(self, request):
         form = CountMessagesForm(request.POST)
@@ -31,10 +32,14 @@ class Base(View):
 
             return redirect('default_count_messages')
 
+        with open('config.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
         context = {
-            'form': form
+            'form': form,
+            'is_button': data['button']
         }
-        return render(request, 'index1.html', context)
+        return render(request, 'new_index1.html', context)
 
 
 class OutputMessagesBase(View):
@@ -45,7 +50,23 @@ class OutputMessagesBase(View):
         count = data['count_messages']
         all_messages = MessageChannel.objects.all()[:count][::-1]
         context = {
-            'messages': all_messages
+            'messages': all_messages,
+            'is_button': data['button']
         }
         return render(request, 'new_index.html', context)
 
+
+class Button(View):
+    def get(self, request):
+        with open('config.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+            if data['button'] is True:
+                data['button'] = False
+            else:
+                data['button'] = True
+
+        with open('config.json', 'w') as file:
+            json.dump(data, file, indent=4)
+
+        return redirect('base')

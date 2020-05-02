@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+import datetime
 
 
 register = template.Library()
@@ -7,4 +8,5 @@ register = template.Library()
 
 @register.filter
 def transform_date(value):
-    return f'{value.hour}:{value.minute}'
+    date = (value + datetime.timedelta(hours=3)).strftime("%H:%M") 
+    return date
