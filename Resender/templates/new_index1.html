@@ -1,0 +1,115 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% load date %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+<style>
+    * {
+        color: white !important;
+    }
+
+    .outer-background {
+        background-image: url("{% static 'assets/img/full_background3.jpg' %}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+
+    .content-container {
+        background-color: rgb(59, 59, 59);
+    }
+
+    .message-button {
+        display: block;
+        opacity: 75%;
+        background-color: rgb(59, 59, 59);
+        width: 100%;
+        color: white !important;
+    }
+
+    footer {
+        bottom: 0;
+        position: absolute;
+        width: 44%;
+    }
+
+    .vertical-center {
+        min-height: 100%;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+    }
+
+    /* .button-container{
+    } */
+</style>
+
+<!--Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="assets/fonts/font-awesome.css"> -->
+<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.css' %}">
+{% endblock head %}
+
+{% block body %}
+<main>
+    <div class="container py-5">
+        <div class="row justify-content-between pb-3">
+            <div class="col-auto">
+                <img src="{% static 'assets/img/logo.png' %}" alt=""><br>
+            </div>
+        </div>
+
+        <div class="row vertical-center">
+            <div class="col-md-6 ml-2">
+                <form action="" method="POST">
+                    {% csrf_token %}
+
+                    {{ form.count.label }}<br>
+                    {{ form.count }}
+
+                    <button type="submit" class="btn btn-dark mt-2 shadow">Изменить</button>
+                </form>
+            </div>
+
+            <div class="col-md-6 ml-2">
+                <label for="control-button-id">Включить/Отключить кнопку</label><br>
+                {% if is_button %}
+                <a href="{% url 'button_url' %}" id="control-button-id"
+                    class="btn btn-dark shadow">Отключить</a>
+                {% else %}
+                <a href="{% url 'button_url' %}" id="control-button-id"
+                    class="btn btn-dark shadow">Включить</a>
+
+                {% endif %}
+            </div>
+        </div>
+
+
+        <footer class="footer mt-5">
+            <div class="container">
+
+                <div class="row">
+                    <!-- <div class="col-md-6 col-sm-6 col-xs-6"> -->
+                    <div class="col-md-6 mt-4">
+                        <p class="animate fade-in animation-time-2s delay-1-5s">
+                            © DoloTEAM<br>
+                            Покупка/продажа бурового инструмента и оборудования!
+                        </p>
+                    </div>
+                    <!-- <div class="col-md-6 col-sm-6 col-xs-6"> -->
+                    <div class="col-md-6 text-right">
+                        <p class="animate fade-in animation-time-2s delay-1-5s">
+                            <i class="fa fa-phone"></i> <a href="tel:+375296321916">+375 29 632 19 16</a><br>
+                            <i class="fa fa-whatsapp"></i> <a href="https://wa.me/375296321916">+375 29 632 1916</a><br>
+                            <i class="fa fa-envelope-o"></i> <a href="mailto:6321916@gmail.com">6321916@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>
+{% endblock body %}
