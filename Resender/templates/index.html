@@ -28,7 +28,7 @@
 	<link rel="apple-touch-icon" href="{% static 'assets/favicon.ico' %}">
 
 	<!--Fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Overpass:400,700,900&display=swap" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="assets/fonts/font-awesome.css"> -->
 	<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.css' %}">
 
@@ -60,7 +60,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- Content -->
 	<div id="outer-wrapper">
 		<div id="inner-wrapper">
@@ -73,9 +72,15 @@
 								<!-- Logo -->
 								<a href="#" id="brand" class="animate fade-in animation-time-3s"><img
 										src="{% static 'assets/img/logo.png' %}" alt=""></a>
-							</div>
-							<div class="col-md-12 vertical-aligned-wrapper">
 
+							</div>
+							<!-- Set count of messages -->
+							<a style="position: relative; left: 920px;" class="animate fade-in animation-time-2s"
+								href="{% url 'base' %}">Указать
+								количество сообщений...</a><br>
+							<a style="position: relative; left: 920px;" class="animate fade-in animation-time-2s"
+								href="https://t.me/doloteams">Присеодиниться к группе</a>
+							<div class="col-md-12 vertical-aligned-wrapper">
 								<div class="col-md-5 col-sm-5 col-xs-12 vertical-aligned-element animate fade-in animation-time-1s delay-1s in"
 									style="position: relative; opacity: 0; top: -14px;">
 									<!--Content-->
@@ -109,7 +114,7 @@
 						</div>
 					</div>
 					<div id="row-footer">
-						<footer style="margin-left: 17px;">
+						<footer style="margin-left: 18px;">
 							<div class="col-md-6 col-sm-6 col-xs-6 vertical-aligned-element text-left">
 								<p class="animate fade-in animation-time-2s delay-1-5s">
 									© DoloTEAM<br>
