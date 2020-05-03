@@ -8,7 +8,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BotSender.settings')
 django.setup()
 from Resender.models import MessageGroup, MessageChannel, ForwardFrom
 
-bot = telebot.TeleBot(token='559941684:AAGo4vUDmKZiTj5bNHgMxm5BddtaxKTZr2I')
+# bot = telebot.TeleBot(token='559941684:AAGo4vUDmKZiTj5bNHgMxm5BddtaxKTZr2I')
+bot = telebot.TeleBot(token='1077949754:AAGTCrVh6NpXWIM-R7Rez4SHcCx5mM6aXck')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
