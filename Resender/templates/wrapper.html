@@ -21,20 +21,37 @@
 
 	<!-- Apple Icon -->
 	<link rel="apple-touch-icon" href="{% static 'assets/favicon.ico' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	{% block head %}{% endblock head %}
 </head>
+<!-- Loading -->
+<div id="preload">
+	<div id="preload-content">
+		<div class="cssload-loader">
+			<div class="cssload-inner cssload-one"></div>
+			<div class="cssload-inner cssload-two"></div>
+			<div class="cssload-inner cssload-three"></div>
+		</div>
+	</div>
+</div>
 
 <body class="outer-background">
+
 	<div>
 		<div class="inner-background">
 			{% block body %}{% endblock body %}
 		</div>
 	</div>
-
+	<div class="backdrop"></div>
 	{% block postfix %}{% endblock postfix %}
+
+	<script type="text/javascript" src="{% static 'assets/js/jquery-2.2.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
 </body>
 
 </html>

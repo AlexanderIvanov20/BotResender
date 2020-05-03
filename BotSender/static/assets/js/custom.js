@@ -4,7 +4,7 @@
 var openedSidePanel;	
 	
 // Page Preloader //
-		$(window).on('load', function(){
+    $(window).on('load', function(){
 		$('.fade-in').css({ position: 'relative', opacity: 0, top: -14 });
 		setTimeout(function(){
 			$('#preload-content').fadeOut(400, function(){
