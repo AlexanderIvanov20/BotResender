@@ -26,8 +26,12 @@ class Base(View):
         if form.is_valid():
             count = form.cleaned_data['count']
 
+            with open('config.json', 'r', encoding='utf-8') as file:
+                data = json.load(file)
+
             with open('config.json', 'w', encoding='utf-8') as file:
-                json.dump({'count_messages': count}, file,
+                data['count_messages'] = count
+                json.dump(data, file,
                           indent=4, ensure_ascii=True)
 
             return redirect('default_count_messages')
