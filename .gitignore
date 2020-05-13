@@ -12,6 +12,7 @@ __pycache__/
 # Aliasing
 /static/
 */media/
+staticfiles
 
 # Debug DB
 *.db

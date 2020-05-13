@@ -8,7 +8,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BotSender.settings')
 django.setup()
 from Resender.models import MessageGroup, MessageChannel, ForwardFrom
 
-bot = telebot.TeleBot(token='1229649371:AAHy9k-0UgZ6cuXbXQBPkgRh6ewVbxuylbQ')
+# bot = telebot.TeleBot(token='559941684:AAGo4vUDmKZiTj5bNHgMxm5BddtaxKTZr2I')
+# bot = telebot.TeleBot(token='1229649371:AAHy9k-0UgZ6cuXbXQBPkgRh6ewVbxuylbQ')
+bot = telebot.TeleBot(token='bot = telebot.TeleBot(token='1229649371:AAHy9k-0UgZ6cuXbXQBPkgRh6ewVbxuylbQ')')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -58,11 +60,6 @@ def get_message_with_photo(message: types.Message):
             username=message.forward_from.username,
             origin=current_message
         )
-
-    if 'reply_markup' in message.json:
-        current_message.url = message.json[
-            'reply_markup']['inline_keyboard'][0][0]['url']
-
     current_message.save()
 
 
@@ -79,10 +76,6 @@ def get_mesage(message: types.Message):
         text=text,
         message_id=message.message_id
     )
-
-    if 'reply_markup' in message.json:
-        current_message.url = message.json[
-            'reply_markup']['inline_keyboard'][0][0]['url']
 
     if message.forward_from is not None:
         forward = ForwardFrom.objects.create(
@@ -129,10 +122,6 @@ def get_message_with_photo_channel(message: types.Message):
     if message.caption is not None:
         caption = message.caption
         current_message.text = caption
-
-    if 'reply_markup' in message.json:
-        current_message.url = message.json[
-            'reply_markup']['inline_keyboard'][0][0]['url']
 
     current_message.save()
 

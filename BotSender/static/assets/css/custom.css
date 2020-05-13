@@ -1,4 +1,13 @@
 /* 2. Preload */
+
+
+
+.col-6 {
+  
+    flex: 0 0 60% !important;
+    max-width: 60% !important;
+}
+
 #preload {
 	background: #000;
 	height: 100%;
