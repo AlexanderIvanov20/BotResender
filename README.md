@@ -1,11 +1,11 @@
 # BotResender
 Bot that resend message (with images and other args) from telegram chat to window on site
 
-Необходимо организовать вывод последних сообщений (количество задается) из совей группы/канала Телеграмм на свой сайт.
-Придумать интересный дизайн вывода сообщений.
-Должна присутствовать (а также отключаться) кнопка для присоединения к группе.
+It is necessary to organize the output of the latest messages (the number is set) from your Telegram group/channel to your website.
+Come up with an interesting message display design.
+There must be (and also disabled) a button to join the group.
 
-html сайт https://bursnab.by там уже находится платный виджет, но он какой-то топорный. 
-Хотелось бы чтобы сообщения выводились таким образом https://bursnab.by/tel.php этот код простой там задан цикл под id сообщению от 1300 до 1100.  
-Но в это случае попадаются несуществующие или удаленные сообщения. Вообщем хочется чтобы стабильно вывод работал и со своим дизайном.
-Вот так выводятся стандартно сообщения из канала https://t.me/s/doloteam/ хотелось бы похоже сделать у себя на сайте, чтобы или канал или группа была.
+HTML site https://bursnab.by there is already a paid widget, but it's kind of clumsy.
+I would like messages to be displayed in this way https://bursnab.by/tel.php this code is simple there is a loop under the message-id from 1300 to 1100.
+But in this case, nonexistent or deleted messages come across. In general, I want the output to work stably with its design.
+This is how messages from the channel https://t.me/s/doloteam/ are displayed as standard, I would like to do it on my site, so that there is either a channel or a group.
